@@ -1,0 +1,76 @@
+
+  <h1 class="Title-Center" >Fake IP</h1>
+
+  <div class="py-24 sm:py-32 inline">
+    
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 "s>
+      <div class="mx-auto max-w-2xl lg:mx-0">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Productos Fake Ip de platzit</h2>
+        <p class="mt-2 text-lg leading-8 text-black">Este es un ejemplo práctico de como consumir un Fake Ip, donde podrás desde crear y eliminar un producto, hasta actualizarlo.</p>
+      </div>
+
+      <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-teal-500 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3" id="fistView">
+        <article 
+        class="flex max-w-xl flex-col items-start justify-between p-8 rounded-xl  bg-orange-500 ml-0.5" 
+        *ngFor="let item of data.slice(imagesControlFirts,imagesControlEnd)">
+        
+          <div class="flex items-center gap-x-4 text-xs mb-6">
+            <time class="text-black text-base">Precio {{item.price | currency:'':'symbol':'1.0-0'}} COP</time>
+            <a class="cursor-pointer relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-black hover:bg-green-600">Buy</a>
+          </div>
+          <div class="group relative">
+            <h2 class="mt-3 text-black">
+                <span class="absolute"></span>
+                {{item.title}}
+            </h2>
+            <p class="mt-5 line-clamp-3 text-sm leading-6 text-black">
+                {{item.description}}
+            </p>
+          </div>
+          <div class="relative mt-8 flex items-center gap-x-4">
+            <div>
+                <img class="h-50 w-50 rounded-full bg-gray-50"  [src]="item.imagesActual" alt="No esta la imagen disponible en este momento">
+                <div>
+                    
+                </div>
+            </div>
+            <div class="text-sm leading-6">
+              <p class="font-semibold text-gray-900">
+                  <span class="absolute inset-0"></span>
+                PLATZI FAKE STORE API
+              </p>
+              <p class="text-black">Publicado: {{item.creationAt}}</p>
+            </div>
+          </div>
+          
+          <div class="inline-flex"> 
+            <app-delete-product [idProduct]="item"></app-delete-product>
+            <!-- <button class="bg-slate-500 inline-flex w-9 mx-5 rounded-full" (click)= >Editar</button> -->
+            <section class="Container">
+              <div class="example-button-row">
+                  <div class="example-flex-container">
+                      <div class="example-button-container">
+                          <button mat-fab color="primary" (click)="fillbody(item); scrollTo('Actualizar')">
+                              <mat-icon>edit</mat-icon>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          </div>
+         
+          
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <button [disabled]="ControlPaginatorRetroceder" (click)="PaginatorRetroceder()" class="inline-flex ms-20  bg-lime-500 w-20 h-5 izquierda"> << </button>
+  <button [disabled]="ControlPaginatorAvanzar" (click)="PaginatorAvanzar()" class="Derecho my-3 bg-lime-500 w-20 h-5"> >> </button>
+
+
+<app-create-product></app-create-product>
+
+<app-actualizar-producto *ngIf="body!= null" [body]="body" id="Actualizar"></app-actualizar-producto>
+
+

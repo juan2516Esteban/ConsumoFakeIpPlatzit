@@ -1,0 +1,25 @@
+.Title-Center{
+    text-align: center; /* Con esto centramos un texto */
+    color: black;
+    font-size: 45px; /* Con esto modificamos el tamaño de la fuente */
+    font-weight: bold; /* Con esto modificamos el grosor de la fuente */
+    margin-top: 30px;
+}
+
+
+.Derecho{
+    margin-left: 1047px;
+    justify-content: center;
+    border-radius: 50px;
+
+}
+ .izquierda{
+    justify-content: center;
+    border-radius: 50px;
+ }
+
+ .Container{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+

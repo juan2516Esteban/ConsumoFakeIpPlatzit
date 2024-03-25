@@ -1,0 +1,32 @@
+.Contenedor{
+    padding: 50px;
+    border-radius: 25px;
+    margin: 10px 30px 10px 30px; 
+}
+
+
+
+.example-full-width{
+    margin-right: 10px; /* Espacio entre los elementos */
+    width: 40%; /* Ancho de los elementos */    
+}
+
+.Contenedor button{
+    display: block;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 25%;
+    height: 40px;
+    border-radius: 25px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s;
+    background-color: rgb(234 88 12);
+}
+
+.Contenedor button.falso{
+    background-color: rgb(239 68 68);
+}
