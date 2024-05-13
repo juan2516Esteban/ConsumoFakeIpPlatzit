@@ -27,6 +27,7 @@ export class ActualizarProductoComponent {
   }
 
   public UpdateProduct(id: any) {
+    console.log(this.body)
     Swal.fire({
       title: '¿Quieres actualizar el producto?',
       icon: 'question',
@@ -46,7 +47,7 @@ export class ActualizarProductoComponent {
               title: this.UpdateProductForms.get('title')?.value,
               price: this.UpdateProductForms.get('price')?.value,
               description: this.UpdateProductForms.get('description')?.value,
-              categoryId: this.UpdateProductForms.get('categoryId')?.value,
+              categoria: this.UpdateProductForms.get('categoria')?.value,
               images: [this.UpdateProductForms.get('images')?.value],
             };
             this.service.UpdateProduct(body, id).subscribe((data: any) => {
@@ -70,7 +71,7 @@ export class ActualizarProductoComponent {
       Validators.maxLength(500),
       Validators.minLength(5),
     ]),
-    categoryId: new FormControl('', [
+    categoria: new FormControl('', [
       Validators.required,
       Validators.minLength(1),
     ]),
@@ -83,7 +84,7 @@ export class ActualizarProductoComponent {
         title: this.body.title,
         price: this.body.price,
         description: this.body.description,
-        categoryId: this.body.categoryId,
+        categoria: this.body.categoria,
         images: this.body.images,
       });
     }

@@ -26,34 +26,27 @@ export class GetFakeIpComponent {
   public indice: number = 0;
   public imagesControlFirts: number = 0;
   public imagesControlEnd: number = 0;
-  public ControlPaginatorAvanzar: boolean = false;
+  public ControlPaginatorAvanzar: boolean = true;
   public ControlPaginatorRetroceder: boolean = true;
 
   public odtenerProductos() {
+    // Estos dos atributos son los que se envian al servicio para paginar los productos
     this.service
-      // Estos dos atributos son los que se envian al servicio para paginar los productos
       .odtenerProductos()
       .subscribe((data: any) => {
         this.data = Array.from(data);
-
-        if (this.imagesControlFirts == 0 && this.imagesControlEnd == 0) {
+        console.log(this.data);
+        
+        if (this.imagesControlFirts == 0 && this.imagesControlEnd == 0 && data.length > 3) {
+          this.ControlPaginatorAvanzar = false;
           this.imagesControlFirts = data.length - 3;
           this.imagesControlEnd = data.length;
+          
         }
-
-        this.data.map((item: any) => {
-          let imageStringify = JSON.stringify(item.images); // convertimos el array de imagenes a string
-          let imageNoGarbage = imageStringify
-            .substring(2, imageStringify.length - 2)
-            .replaceAll('\\', ' ')
-            .replaceAll('""', '"')
-            .replaceAll('" "', '"')
-            .replaceAll(' ', '');
-          try {
-            item.images = JSON.parse(imageNoGarbage);
-            item.imagesActual = item.images[0];
-          } catch (e) {}
-        });
+        else if(data.length <=3){
+          this.imagesControlFirts = 0;
+          this.imagesControlEnd = data.length;
+        }
       });
   }
 
@@ -66,17 +59,53 @@ export class GetFakeIpComponent {
   }
 
   public PaginatorAvanzar() {
+    
     this.ControlPaginatorRetroceder = false;
-    this.imagesControlEnd = this.imagesControlFirts;
-    this.imagesControlFirts -= 3;
-    if (this.imagesControlFirts - 3 < 0 || this.imagesControlFirts - 3 == 0) {
+   
+    
+    if (this.imagesControlFirts - 3 < 0 || this.imagesControlFirts - 3  == 0) {
+
       this.imagesControlEnd = this.imagesControlFirts;
       this.imagesControlFirts = 0;
-      this.odtenerProductos();
+  
       this.ControlPaginatorAvanzar = true;
+      this.odtenerProductos();
+
     } else {
       this.odtenerProductos();
+      this.imagesControlEnd = this.imagesControlFirts;
+      this.imagesControlFirts -= 3;
     }
+  }
+
+  public PaginatorRetroceder() {
+  
+    this.ControlPaginatorAvanzar = false;
+    this.imagesControlFirts = this.imagesControlEnd;
+    this.imagesControlEnd += 3; 
+
+    if (this.imagesControlEnd + 3 > this.data.length) {
+      this.imagesControlEnd = this.data.length;
+      console.log(this.imagesControlFirts , this.imagesControlEnd , "gonorrea");
+      this.odtenerProductos();
+      this.ControlPaginatorRetroceder = true;
+    } else { 
+      this.odtenerProductos();
+    }
+  }
+
+  fillbody(producto: any) {
+    this.body = null;
+    setTimeout(() => {
+      this.body = {
+        Id_productos: producto.Id_productos,
+        title: producto.title,
+        price: producto.price,
+        description: producto.description,
+        categoria: producto.categoria,
+        images: producto.images,
+      };
+    }, 50);
   }
 
   public scrollTo(elementId: string): void {
@@ -88,30 +117,5 @@ export class GetFakeIpComponent {
     }, 50);
   }
 
-  public PaginatorRetroceder() {
-    this.ControlPaginatorAvanzar = false;
-    this.imagesControlFirts = this.imagesControlEnd;
-    this.imagesControlEnd += 3;
-    if (this.imagesControlEnd + 3 > this.data.length) {
-      this.imagesControlEnd = this.data.length;
-      this.odtenerProductos();
-      this.ControlPaginatorRetroceder = true;
-    } else {
-      this.odtenerProductos();
-    }
-  }
-
-  fillbody(producto: any) {
-    this.body = null;
-    setTimeout(() => {
-      this.body = {
-        id: producto.id,
-        title: producto.title,
-        price: producto.price,
-        description: producto.description,
-        categoryId: producto.category.id,
-        images: producto.images[0],
-      };
-    }, 50);
-  }
 }
+

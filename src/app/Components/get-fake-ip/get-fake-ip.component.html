@@ -26,14 +26,16 @@
             <p class="mt-5 line-clamp-3 text-sm leading-6 text-black">
                 {{item.description}}
             </p>
+
           </div>
-          <div class="relative mt-8 flex items-center gap-x-4">
-            <div>
-                <img class="h-50 w-50 rounded-full bg-gray-50"  [src]="item.imagesActual" alt="No esta la imagen disponible en este momento">
+            <div class="relative mt-8 flex items-center gap-x-3">
+              <div>
+                  <img class="max-h-40 max-w-40 rounded-full bg-gray-50"  [src]="item.images" alt="No esta la imagen disponible en este momento">
                 <div>
-                    
-                </div>
+                      
+              </div>
             </div>
+            
             <div class="text-sm leading-6">
               <p class="font-semibold text-gray-900">
                   <span class="absolute inset-0"></span>
@@ -45,7 +47,6 @@
           
           <div class="inline-flex"> 
             <app-delete-product [idProduct]="item"></app-delete-product>
-            <!-- <button class="bg-slate-500 inline-flex w-9 mx-5 rounded-full" (click)= >Editar</button> -->
             <section class="Container">
               <div class="example-button-row">
                   <div class="example-flex-container">

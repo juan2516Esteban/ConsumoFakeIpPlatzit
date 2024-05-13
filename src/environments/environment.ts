@@ -1,5 +1,5 @@
 // environment.ts
 export const environment = {
   production: false,
-  UrlFakeIpProducts: ' https://api.escuelajs.co/api/v1/products',
+  UrlFakeIpProducts: 'http://localhost:8000/productos',
 };

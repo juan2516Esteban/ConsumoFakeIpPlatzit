@@ -12,6 +12,8 @@ export class DeleteProductComponent {
 
   @Input() idProduct: any;
 
+  
+
   ngOnInit(): void {}
 
   public deleteProduct(id: any) {

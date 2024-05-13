@@ -1,6 +1,6 @@
 <div class="bg-slate-700 Contenedor">
     <h1>Actualizar Productos</h1>
-          <form class="example-form"  [formGroup] = "UpdateProductForms" (ngSubmit)="UpdateProduct(body.id)">
+          <form class="example-form"  [formGroup] = "UpdateProductForms" (ngSubmit)="UpdateProduct(body.Id_productos)">
             
             <mat-form-field class="example-full-width">
     
@@ -21,13 +21,14 @@
     
             <mat-form-field class="example-full-width">
               <mat-label>Categoría</mat-label>
-              <input matInput placeholder="Category" type="text" formControlName="categoryId">
+              <input matInput placeholder="Category" type="text" formControlName="categoria">
             </mat-form-field>
     
             <mat-form-field class="example-full-width">
               <mat-label>Imágenes</mat-label>
               <input matInput placeholder="images" type="url" formControlName="images" class="block">
             </mat-form-field>
+
               <div class="flex">
                 <button type="submit" class="inline" [disabled]="UpdateProductForms.invalid" [ngClass]="{falso: UpdateProductForms.invalid}">Actualizar</button>
                 <button class="falso" (click)="Cancelar()">Cancelar</button>

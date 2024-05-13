@@ -18,10 +18,11 @@ export class CreateProductComponent {
       title: this.formProduct.get('title')?.value,
       price: this.formProduct.get('price')?.value,
       description: this.formProduct.get('description')?.value,
-      categoryId: this.formProduct.get('categoryId')?.value,
+      categoria: this.formProduct.get('categoria')?.value,
       images: [this.formProduct.get('images')?.value],
     };
 
+    console.log(body);
     this.service.CreateProduct(body).subscribe((data: any) => {
       Swal.fire({
         title: 'Se a creado exitosamente el producto',
@@ -48,7 +49,7 @@ export class CreateProductComponent {
       Validators.maxLength(50),
       Validators.minLength(5),
     ]),
-    categoryId: new FormControl('', [
+    categoria: new FormControl('', [
       Validators.required,
       Validators.minLength(1),
     ]),
