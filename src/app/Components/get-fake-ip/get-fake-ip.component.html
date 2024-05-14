@@ -26,6 +26,7 @@
             <p class="mt-5 line-clamp-3 text-sm leading-6 text-black">
                 {{item.description}}
             </p>
+           
 
           </div>
             <div class="relative mt-8 flex items-center gap-x-3">
@@ -41,9 +42,13 @@
                   <span class="absolute inset-0"></span>
                 PLATZI FAKE STORE API
               </p>
-              <p class="text-black">Publicado: {{item.creationAt}}</p>
+              <p class="text-black"><strong>Publicado:</strong> {{item.creationAt}}</p>
             </div>
           </div>
+
+          <p class="line-clamp-3 text-sm leading-6 text-black" style="margin-top: 10px;">
+            <strong>Categoria:</strong> {{item.categoria}}
+        </p>
           
           <div class="inline-flex"> 
             <app-delete-product [idProduct]="item"></app-delete-product>

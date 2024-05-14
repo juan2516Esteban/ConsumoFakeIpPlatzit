@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 // Importamos el servicio
-import { FakeIpService } from 'src/app/Service/fake-ip.service';
+import { FakeIpService } from 'src/app/Service/ServiceProduct/fake-ip.service';
 import { interval } from 'rxjs';
 
 @Component({
@@ -86,7 +86,6 @@ export class GetFakeIpComponent {
 
     if (this.imagesControlEnd + 3 > this.data.length) {
       this.imagesControlEnd = this.data.length;
-      console.log(this.imagesControlFirts , this.imagesControlEnd , "gonorrea");
       this.odtenerProductos();
       this.ControlPaginatorRetroceder = true;
     } else { 

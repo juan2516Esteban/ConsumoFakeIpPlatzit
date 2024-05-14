@@ -1,0 +1,13 @@
+{
+    "/Categorias/*":{
+        "target": "http://localhost:8001",
+        "secure": false,
+        "logLevel": "debug"
+    } ,
+
+    "/Productos/*":{
+        "target": "http://localhost:8000",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

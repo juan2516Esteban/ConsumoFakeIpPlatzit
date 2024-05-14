@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FakeIpService } from 'src/app/Service/fake-ip.service';
+import { FakeIpService } from 'src/app/Service/ServiceProduct/fake-ip.service';
 import Swal from 'sweetalert2';
 
 @Component({

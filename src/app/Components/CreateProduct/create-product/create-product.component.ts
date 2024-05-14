@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FakeIpService } from 'src/app/Service/fake-ip.service';
+import { FakeIpService } from 'src/app/Service/ServiceProduct/fake-ip.service';
+import {ServiCategoryProductService} from 'src/app/Service/ServiceCategory/servi-category-product.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
@@ -9,9 +10,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./create-product.component.css'],
 })
 export class CreateProductComponent {
-  constructor(private service: FakeIpService) {}
+  constructor(private serviceProduct: FakeIpService , private serviceCategory: ServiCategoryProductService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.GetCategory();
+  }
+
+  public data: any;
+  public categoria: string = "Categoria";
 
   public CreateProduct() {
     let body = {
@@ -23,7 +29,7 @@ export class CreateProductComponent {
     };
 
     console.log(body);
-    this.service.CreateProduct(body).subscribe((data: any) => {
+    this.serviceProduct.CreateProduct(body).subscribe((data: any) => {
       Swal.fire({
         title: 'Se a creado exitosamente el producto',
         icon: 'success',
@@ -55,4 +61,22 @@ export class CreateProductComponent {
     ]),
     images: new FormControl('', [Validators.required, Validators.minLength(1)]),
   });
+
+  public GetCategory(){ 
+    this.serviceCategory.ObtenerCategorias().subscribe((data: any) => {
+      this.data = Array.from(data)
+      console.log(data);
+      
+    })
+  }
+
+  public nada(categoria: string){
+    this.categoria = categoria;
+    console.log(this.categoria);
+    this.formProduct.patchValue({
+      categoria: this.categoria
+    });
+    
+  }
+
 }

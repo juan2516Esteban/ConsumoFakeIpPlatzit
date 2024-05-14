@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FakeIpService } from 'src/app/Service/fake-ip.service';
+import { FakeIpService } from 'src/app/Service/ServiceProduct/fake-ip.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GetFakeIpComponent } from '../get-fake-ip/get-fake-ip.component';
 import Swal from 'sweetalert2';
