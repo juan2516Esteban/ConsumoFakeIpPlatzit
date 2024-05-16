@@ -65,14 +65,11 @@ export class CreateProductComponent {
   public GetCategory(){ 
     this.serviceCategory.ObtenerCategorias().subscribe((data: any) => {
       this.data = Array.from(data)
-      console.log(data);
-      
     })
   }
 
-  public nada(categoria: string){
+  public obtenerCategoria(categoria: string){
     this.categoria = categoria;
-    console.log(this.categoria);
     this.formProduct.patchValue({
       categoria: this.categoria
     });

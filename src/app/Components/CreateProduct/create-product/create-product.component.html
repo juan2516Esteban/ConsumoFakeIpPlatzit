@@ -22,7 +22,7 @@
           <div class="example-full-width" style="display: inline-block">
           <button type="button" mat-button [matMenuTriggerFor]="animals" formControlName="categoria">{{categoria}}</button>
             <mat-menu #animals="matMenu">
-              <button mat-menu-item *ngFor="let item of data" (click)="nada(item.Descripcion)">{{item.Descripcion}}</button>
+              <button mat-menu-item *ngFor="let item of data" (click)="obtenerCategoria(item.Descripcion)">{{item.Descripcion}}</button>
             </mat-menu>
           </div>
 

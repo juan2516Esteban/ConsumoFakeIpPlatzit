@@ -35,7 +35,6 @@ export class GetFakeIpComponent {
       .odtenerProductos()
       .subscribe((data: any) => {
         this.data = Array.from(data);
-        console.log(this.data);
         
         if (this.imagesControlFirts == 0 && this.imagesControlEnd == 0 && data.length > 3) {
           this.ControlPaginatorAvanzar = false;
