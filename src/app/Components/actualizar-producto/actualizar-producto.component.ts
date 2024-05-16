@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FakeIpService } from 'src/app/Service/ServiceProduct/fake-ip.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GetFakeIpComponent } from '../get-fake-ip/get-fake-ip.component';
+import {ServiCategoryProductService} from 'src/app/Service/ServiceCategory/servi-category-product.service'
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-actualizar-producto',
@@ -11,14 +12,18 @@ import Swal from 'sweetalert2';
 export class ActualizarProductoComponent {
   constructor(
     private service: FakeIpService,
-    private get: GetFakeIpComponent
+    private get: GetFakeIpComponent,
+    private serviceCategory: ServiCategoryProductService
   ) {}
 
   ngOnInit(): void {
     this.Rellenar();
+    this.GetCategory();
   }
 
   @Input() body: any = null;
+  public categoria: string = "Categoria";
+  public data: any;
 
   public Cancelar() {
     console.log('cancelar');
@@ -87,6 +92,24 @@ export class ActualizarProductoComponent {
         categoria: this.body.categoria,
         images: this.body.images,
       });
+
+      this.obtenerCategoria(this.body.categoria)
     }
+  }
+
+  public obtenerCategoria(categoria: string){
+    this.categoria = categoria;
+    this.UpdateProductForms.patchValue({
+      categoria: this.categoria
+    });
+    
+  }
+
+  public GetCategory(){ 
+    this.serviceCategory.ObtenerCategorias().subscribe((data: any) => {
+      this.data = Array.from(data)
+      console.log(data);
+      
+    })
   }
 }

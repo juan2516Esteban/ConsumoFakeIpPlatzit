@@ -19,10 +19,12 @@
               <input matInput placeholder="description" type="text" formControlName="description">
             </mat-form-field>  
     
-            <mat-form-field class="example-full-width">
-              <mat-label>Categoría</mat-label>
-              <input matInput placeholder="Category" type="text" formControlName="categoria">
-            </mat-form-field>
+            <div class="example-full-width" style="display: inline-block">
+              <button type="button" mat-button [matMenuTriggerFor]="animals">{{categoria}}</button>
+                <mat-menu #animals="matMenu">
+                  <button mat-menu-item *ngFor="let item of data" (click)="obtenerCategoria(item.Descripcion)">{{item.Descripcion}}</button>
+                </mat-menu>
+              </div>
     
             <mat-form-field class="example-full-width">
               <mat-label>Imágenes</mat-label>

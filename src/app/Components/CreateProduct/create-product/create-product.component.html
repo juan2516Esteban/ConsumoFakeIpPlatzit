@@ -19,7 +19,7 @@
           <input matInput placeholder="description" type="text" formControlName="description">
         </mat-form-field>  
 
-          <div class="flex ">
+          <div class="example-full-width" style="display: inline-block">
           <button type="button" mat-button [matMenuTriggerFor]="animals" formControlName="categoria">{{categoria}}</button>
             <mat-menu #animals="matMenu">
               <button mat-menu-item *ngFor="let item of data" (click)="nada(item.Descripcion)">{{item.Descripcion}}</button>
